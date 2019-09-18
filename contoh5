@@ -1,0 +1,67 @@
+import math
+
+class Bangun3D(object):
+    def cetakdata(self):
+        raise NotImplementedError
+    def hitungvolume(self):
+        raise NotImplementedError
+    def cetakvolume(self):
+        raise NotImplementedError
+        
+class Kotak(Bangun3D):
+    def __init__(self, p, l=None, t=None):
+        if l == None and t == None:
+           self.panjang = self.lebar = \
+           self.tinggi = p
+        else:
+           self.panjang = p
+           self.lebar = l
+           self.tinggi = t
+    def cetakdata(self):
+        print("panjang\t: ", self.panjang)
+        print("lebar\t: ", self.lebar)
+        print("tinggi\t: ", self.tinggi)
+        
+    def hitungvolume(self):
+        return self.panjang * self.lebar * \
+               self.tinggi
+    
+    def cetakvolume(self):
+        print("Volume Kotak \t= ",
+              self.hitungvolume())
+              
+class Tabung(Bangun3D):
+    def __init__(self, r, t):
+        self.jarijari = r
+        self.tinggi = t
+        
+    def cetakdata(self):
+        print("Jari-jari alas \t: ",
+               self.jarijari)
+        print("tinggi tabung \t: ", self.tinggi)
+        
+    def hitungvolume(self):
+        return math.pi * pow(self.jarijari, 2) * \
+               self.tinggi
+    def cetakvolume(self):
+        print("Volume tabung \t= ",
+              self.hitungvolume())
+              
+def main ():
+    obj1 = Kotak(6,5,4)
+    print ("BALOK")
+    obj1.cetakdata()
+    obj1.cetakvolume()
+    
+    obj2 = Kotak(5)
+    print("\nKUBUS")
+    obj2.cetakdata()
+    obj2.cetakvolume()
+    
+    obj3 = Tabung(3,4)
+    print("\nTABUNG")
+    obj3.cetakdata()
+    obj3.cetakvolume()
+    
+if __name__== "__main__":
+   main()
